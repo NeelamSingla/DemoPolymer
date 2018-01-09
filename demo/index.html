@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>polymer-js demo</title>
+
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+    <link rel="import" href="../polymer-js.html">
+    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+  <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+  <link rel="import" href="../../paper-input/paper-input.html">
+  <link rel="import" href="../../paper-button/paper-button.html">
+  <link rel="import" href="../../paper-checkbox/paper-checkbox.html">
+  <link rel="import" href="../../paper-dropdown-menu/paper-dropdown-menu.html">
+  <link rel="import" href="../../paper-item/paper-item.html">
+  <link rel="import" href="../../paper-listbox/paper-listbox.html">
+  <link rel="import" href="../../paper-spinner/paper-spinner.html">
+  <link rel="import" href="../../paper-styles/shadow.html"
+   <custom-style>
+    <style is="custom-style" include="demo-pages-shared-styles">
+      input, paper-input, paper-checkbox {
+        margin-bottom: 8px;
+      }
+      iron-form {
+        @apply --shadow-elevation-2dp;
+        padding: 20px;
+      }
+      paper-button {
+        display: inline-block;
+        width: 45%;
+        text-align: center;
+      }
+      #form1 paper-button {
+        width: 30%;
+      }
+      paper-button:not([disabled]) {
+        background: #03a9f4;
+        color: white;
+      }
+      
+      .output {
+        margin-top: 20px;
+        word-wrap: break-word;
+        font-family: monospace;
+      }
+    </style>
+  </custom-style>
+</head>
+<body unresolved>
+  <div class="vertical-section-container centered">
+    <h3><code> Exflow Web Customer Onboarding</code></h3>
+    <demo-snippet>
+      <template>
+        
+        <br><br>
+		
+
+
+        <iron-form id="form1">
+          <form action="/foo" method="get">
+            <paper-input label="Customer Name" value="" name="customername" maxlength="35" error-message="Please enter correct data" required></paper-input>
+			<paper-input label="Dynamics Url" value="" name="dynamicsUrl" type="URL" required error-message="Please enter correct data">
+			</paper-input>
+			<paper-input label="Service username" value="" name="serviceusername" error-message="Please enter correct data" required></paper-input>
+			<paper-input label="Service password" value="" name="servicepassword" type="password" maxlength="8" error-message="Please enter correct data" required></paper-input>
+            
+           
+           <paper-dropdown-menu label="Location" name="location" required>
+
+              <paper-listbox class="dropdown-content" slot="dropdown-content">
+                <paper-item value="sweden">Sweden</paper-item>
+                <paper-item value="germany">Germany</paper-item>
+                <paper-item value="france">France</paper-item>
+                <paper-item value="hungary">Hungary</paper-item>
+              </paper-listbox>
+            </paper-dropdown-menu>
+			<paper-input label="Other information" value="" name="otherinformation" ></paper-input> 
+  </paper-input>
+
+            <br><br>
+            <paper-button raised onclick="form1.submit()">Submit</paper-button>
+            <paper-button raised onclick="form1.reset()">Reset</paper-button>
+            <paper-button raised onclick="form1.validate()">Validate</paper-button>
+          </form>
+          <br>
+          <div class="output"></div>
+        </iron-form>
+        <script>
+          form1.addEventListener('iron-form-submit', function(event) {
+		 
+            this.querySelector('.output').innerHTML = JSON.stringify(event.detail);
+			
+
+
+			
+});
+
+          });
+        </script>
+      </template>
+    </demo-snippet>
+
+    
+  </div>
+
+</body>
+    
+</html>
